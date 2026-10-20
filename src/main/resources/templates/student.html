@@ -1,0 +1,12 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FixItHub</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><nav class="top"><a th:replace="~{fragments :: brand}"></a><div><span class="muted" th:text="${user.name}"></span><a href="/logout" class="btn">Logout</a></div></nav>
+<div class="wrap">
+<div class="alert" th:each="a : ${alerts}">✅ Your complaint "<b th:text="${a.title}"></b>" has been resolved. Note: <span th:text="${a.resolutionNote}"></span></div>
+<div class="card"><h3>Raise a complaint</h3><form method="post" action="/complaints">
+<select name="category" required><option value="">Select category</option><option th:each="c : ${categories}" th:value="${c}" th:text="${c.label}"></option></select>
+<input name="title" placeholder="Title" required><textarea name="description" rows="4" placeholder="Describe the issue" required></textarea><button>Submit complaint</button></form></div>
+<h3>My complaints</h3><div class="card" th:each="c : ${list}">
+<div class="row"><b th:text="${c.title}"></b><span class="tag" th:classappend="${c.status}" th:text="${c.status}"></span></div>
+<p class="muted" th:text="${c.category.label}"></p><p th:text="${c.description}"></p>
+<p class="ok" th:if="${c.resolutionNote != null}">Resolution: <span th:text="${c.resolutionNote}"></span></p></div>
+<p class="muted" th:if="${#lists.isEmpty(list)}">No complaints yet.</p></div></body></html>

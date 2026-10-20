@@ -1,0 +1,19 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FixItHub</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body>
+<nav class="top"><a th:replace="~{fragments :: brand}"></a><div><a href="/login" class="link">Sign in</a><a href="/register" class="btn primary">Create account</a></div></nav>
+<section class="hero"><div>
+  <span class="pill">College complaint intelligence system</span>
+  <h1 class="big">Report it.<br>Route it to the <span>right desk</span>.<br>Get it resolved.</h1>
+  <p class="lead">FixItHub is the single channel for campus complaints. Students report an issue in seconds, it lands with the in-charge of that department instantly, and both sides can follow it until it is closed.</p>
+  <div class="actions"><a class="btn primary" href="/register">Register as a student →</a><a class="btn" href="/login">Sign in</a></div>
+  <div class="feats"><span>🛡 Department-routed</span><span>⏱ Status tracked</span><span>✅ Resolution logged</span></div>
+</div>
+<div class="showcase">
+  <div class="chips"><span>Departments</span><span>Management</span><span>Hostel</span><span>Café</span></div>
+  <div class="sample">
+    <div class="row"><span class="tag">SAMPLE</span><span class="tag PENDING">In progress</span></div>
+    <h3>No water supply in Block C washroom</h3><p class="muted">Hostel • Floor 2</p>
+    <ul class="steps"><li>Complaint registered</li><li>Routed to Hostel in-charge</li><li class="now">Work in progress</li><li class="todo">Resolved</li></ul>
+  </div>
+</div></section>
+</body></html>

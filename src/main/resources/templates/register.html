@@ -1,0 +1,8 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Register - FixItHub</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><nav class="top"><a th:replace="~{fragments :: brand}"></a><a href="/login" class="link">Sign in</a></nav>
+<div class="wrap small"><div class="card"><h2>Create your account</h2><p class="muted">Student registration</p><p class="err" th:text="${error}"></p>
+<form method="post" action="/register" th:object="${user}">
+<input th:field="*{name}" placeholder="Full name" required><input th:field="*{rollNo}" placeholder="Roll number" required>
+<input th:field="*{email}" type="email" placeholder="College email" required>
+<input th:field="*{password}" type="password" placeholder="Password (min 6)" minlength="6" required><button>Create account</button></form>
+</div></div></body></html>

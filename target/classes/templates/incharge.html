@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FixItHub</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><nav class="top"><a th:replace="~{fragments :: brand}"></a><div><span class="pill" th:text="${user.category.label}"></span><a href="/logout" class="btn">Logout</a></div></nav>
+<div class="wrap"><h3>Complaints for your desk</h3><div class="card" th:each="c : ${list}">
+    <div class="row"><b th:text="${c.title}"></b><span class="tag" th:classappend="${c.status}" th:text="${c.status}"></span></div>
+    <p class="muted">by <span th:text="${c.student.name}"></span> (<span th:text="${c.student.rollNo}"></span>)</p><p th:text="${c.description}"></p>
+    <form th:if="${c.status.name()=='PENDING'}" method="post" th:action="@{/complaints/{id}/resolve(id=${c.id})}">
+        <input name="note" placeholder="Resolution note" required><button>Mark as resolved &amp; notify student</button></form>
+    <p class="ok" th:if="${c.status.name()=='RESOLVED'}">Resolved: <span th:text="${c.resolutionNote}"></span></p></div>
+    <p class="muted" th:if="${#lists.isEmpty(list)}">No complaints assigned.</p></div></body></html>
